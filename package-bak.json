@@ -1,6 +1,6 @@
 {
-  "name": "django-vue-admin",
-  "version": "2.1.4",
+  "name": "d2-admin",
+  "version": "1.20.1",
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "start": "npm run serve",
@@ -8,50 +8,39 @@
     "build": "vue-cli-service build",
     "build:preview": "NODE_OPTIONS=--max_old_space_size=4096 vue-cli-service build --mode preview",
     "lint": "vue-cli-service lint --fix",
-    "test:unit": "vue-cli-service test:unit",
-    "test": "vue-cli-service build --mode test"
+    "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "d2p-extends": "^2.17.9",
+    "d2-crud-x": "^2.17.9",
+    "echarts": "^5.4.2",
+    "js-md5": "^0.7.3",
+    "vxe-table": "^3.3.2",
+    "xe-utils": "^3.2.1",
+    "d2-crud-plus": "^2.17.9",
+    "vue-grid-layout": "^2.4.0",
     "@great-dream/template": "^1.0.2",
     "axios": "^0.19.0",
     "axios-mock-adapter": "^1.18.1",
     "better-scroll": "^1.15.2",
-    "china-division": "^2.4.0",
     "core-js": "^3.4.3",
-    "cropperjs": "^1.5.6",
-    "d2-crud-plus": "^2.17.9",
-    "d2-crud-x": "^2.17.9",
-    "d2p-extends": "^2.17.9",
     "dayjs": "^1.8.17",
-    "echarts": "^5.4.2",
-    "el-phone-number-input": "^1.1.5",
-    "element-ui": "^2.15.5",
+    "element-ui": "^2.15.6",
     "faker": "^4.1.0",
     "flex.css": "^1.1.7",
     "fuse.js": "^5.2.3",
     "hotkeys-js": "^3.7.3",
     "js-cookie": "^2.2.1",
-    "js-md5": "^0.7.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "lowdb": "^1.0.0",
     "nprogress": "^0.2.0",
-    "qiankun": "^2.7.2",
-    "qrcodejs2": "^0.0.2",
     "screenfull": "^5.0.2",
     "sortablejs": "^1.10.1",
     "ua-parser-js": "^0.7.20",
-    "viser-vue": "^2.4.8",
-    "vue": "2.7.14",
-    "vue-echarts": "^6.5.4",
-    "vue-grid-layout": "^2.4.0",
-    "vue-html2pdf": "^1.8.0",
+    "vue": "^2.6.11",
     "vue-i18n": "^8.15.1",
-    "vue-infinite-scroll": "^2.0.2",
-    "vue-router": "^3.6.5",
-    "vue-splitpane": "^1.0.6",
-    "vuex": "^3.1.2",
-    "vxe-table": "^3.3.2",
-    "xe-utils": "^3.2.1"
+    "vue-router": "^3.1.3",
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@d2-projects/vue-filename-injector": "^1.1.0",
@@ -89,6 +78,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/liqianglog/django-vue-admin"
+    "url": "https://github.com/d2-projects/d2-admin.git"
   }
 }
