@@ -9,8 +9,10 @@ import store from '@/store/index'
 
 // 菜单和路由设置
 import router from './router'
+
 // import { menuHeader, menuAside } from '@/menu'
 import { menuHeader} from '@/menu'
+
 // import { frameInRoutes } from '@/router/routes'
 
 
@@ -36,11 +38,11 @@ import * as echarts from 'echarts' // 注册echarts组件
 
 // 核心插件
 Vue.use(d2Admin)
-Vue.use(VXETable)
-Vue.prototype.$md5 = md5
-Vue.prototype.$util = util
-Vue.prototype.$websocket = websocket
-Vue.prototype.$echarts = echarts
+Vue.use(VXETable) //新增
+Vue.prototype.$md5 = md5 //新增
+Vue.prototype.$util = util //新增
+Vue.prototype.$websocket = websocket //新增
+Vue.prototype.$echarts = echarts //新增
 
 
 new Vue({
@@ -49,6 +51,7 @@ new Vue({
   i18n,
   render: h => h(App),
 
+  //新增
   beforeCreate () {
     // 初始化配置-新增
     this.$store.dispatch('d2admin/settings/load')
@@ -79,6 +82,7 @@ new Vue({
     this.$store.dispatch('d2admin/fullscreen/listen')
   },
 
+  //新增
   watch: {
     // 检测路由变化切换侧边栏内容
     '$route.matched': {

@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 
+// 如果没有先定义 cookies 对象，那么尝试给其添加属性或方法就会报错
 const cookies = {}
 
 /**
@@ -13,6 +14,7 @@ cookies.set = function (name = 'default', value = '', cookieSetting = {}) {
     expires: 1
   }
   Object.assign(currentCookieSetting, cookieSetting)
+  // Object.assign(currentCookieSetting, cookieSetting) 的作用是将cookieSetting对象中的所有属性和对应的值都复制到 currentCookieSetting 对象中，并覆盖同名属性的值。如果有同名属性，则后面的属性值会覆盖前面的属性值
   Cookies.set(`d2admin-${process.env.VUE_APP_VERSION}-${name}`, value, currentCookieSetting)
 }
 

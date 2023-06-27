@@ -5,6 +5,7 @@ import log from './util.log'
 import dayjs from 'dayjs' //新增
 import filterParams from './util.params'  //新增
 
+// 这段代码定义了一个名为util的常量，它包含四个属性
 const util = {
   cookies,
   db,
