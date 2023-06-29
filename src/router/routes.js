@@ -75,7 +75,8 @@ const frameIn = [
         name: 'redirect',
         hidden: true,
         component: _import('system/function/redirect')
-      }
+      },
+
     ]
   }
 ]
