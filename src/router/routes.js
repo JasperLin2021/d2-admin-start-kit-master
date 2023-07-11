@@ -24,44 +24,63 @@ const frameIn = [
         },
         component: _import('dashboard/workbench/index')
       },
+      {
+        path: 'userInfo',
+        name: 'userInfo',
+        meta: {
+          title: '个人信息',
+          auth: true
+        },
+        component: () => import('@/layout/header-aside/components/header-user/userinfo')
+      },
+      // dashboard 工作台
+      {
+        path: 'workbench',
+        name: 'workbench',
+        meta: {
+          title: '工作台',
+          auth: true
+        },
+        component: _import('dashboard/workbench')
+      },
       // 演示页面
-      {
-        path: 'page1',
-        name: 'page1',
-        meta: {
-          title: '页面 1',
-          auth: true
-        },
-        component: _import('demo/page1')
-      },
-      {
-        path: 'page2',
-        name: 'page2',
-        meta: {
-          title: '页面 2',
-          auth: true
-        },
-        component: _import('demo/page2')
-      },
-      {
-        path: 'page3',
-        name: 'page3',
-        meta: {
-          title: '页面 3',
-          auth: true
-        },
-        component: _import('demo/page3')
-      },
+      // {
+      //   path: 'page1',
+      //   name: 'page1',
+      //   meta: {
+      //     title: '页面 1',
+      //     auth: true
+      //   },
+      //   component: _import('demo/page1')
+      // },
+      // {
+      //   path: 'page2',
+      //   name: 'page2',
+      //   meta: {
+      //     title: '页面 2',
+      //     auth: true
+      //   },
+      //   component: _import('demo/page2')
+      // },
+      // {
+      //   path: 'page3',
+      //   name: 'page3',
+      //   meta: {
+      //     title: '页面 3',
+      //     auth: true
+      //   },
+      //   component: _import('demo/page3')
+      // },
       // 系统 前端日志
-      {
-        path: 'log',
-        name: 'log',
-        meta: {
-          title: '前端日志',
-          auth: true
-        },
-        component: _import('system/log')
-      },
+      // {
+      //   path: 'log',
+      //   name: 'log',
+      //   meta: {
+      //     title: '前端日志',
+      //     auth: true
+      //   },
+      //   component: _import('system/log')
+      // },
       // 刷新页面 必须保留
       {
         path: 'refresh',

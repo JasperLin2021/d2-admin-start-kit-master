@@ -69,17 +69,28 @@ router.beforeEach(async (to, from, next) => {
       getMenu().then(ret => {
         // 校验路由是否有效
         ret = checkRouter(ret)
+    console.log('ret==>',ret)
         const routes = handleRouter(ret)
         // 处理路由 得到每一级的路由设置
+        console.log("routes",routes)
         store.commit('d2admin/page/init', routes)
 
         router.addRoutes(routes)
+
+        console.log("router.addRoutes",router)
         // routes.forEach(route => router.addRoute(route))
 
+        // console.log("handleAsideMenu-ret", ret)
         const menu = handleAsideMenu(ret)
+        console.log("menu",menu)
+        // console.log("ret.filter(value => value.visible === true)", ret.filter(value => value.visible === true))
         const aside = handleAsideMenu(ret.filter(value => value.visible === true))
+        console.log("aside",aside)
+
         store.commit('d2admin/menu/asideSet', aside) // 设置侧边栏菜单
         store.commit('d2admin/search/init', menu) // 设置搜索
+
+        console.log("{ path: to.fullPath, replace: true, params: to.params }",{ path: to.fullPath, replace: true, params: to.params })
         next({ path: to.fullPath, replace: true, params: to.params })
       })
     } else {

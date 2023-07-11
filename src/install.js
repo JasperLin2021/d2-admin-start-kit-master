@@ -2,6 +2,8 @@ import Vue from 'vue'
 // import d2Crud from '@d2-project/d2-crud'
 import d2CrudX from 'd2-crud-x'
 import { d2CrudPlus } from 'd2-crud-plus'
+
+
 import {
   D2pAreaSelector,
   D2pDemoExtend,
@@ -10,12 +12,14 @@ import {
   D2pIconSelector,
   D2pUploader
 } from 'd2p-extends' // 源码方式引入，上传组件支持懒加载
+
 // http请求
 import { request } from '@/api/service'
+
 import util from '@/libs/util'
 import XEUtils from 'xe-utils'
 import store from '@/store/index'
-import types from '@/config/d2p-extends/types'
+import types from '@/config/d2p-extends/types' //跟查看样式有关
 import { checkPlugins, plugins } from '@/views/plugins'
 
 /**
@@ -29,6 +33,7 @@ import { checkPlugins, plugins } from '@/views/plugins'
 // 按如下重命名引入可与官方版共存，index.vue中标签用<d2-crud-x />使用加强版
 // 不传name，则d2CrudX的标签仍为<d2-crud>,不可与官方版共存
 Vue.use(d2CrudX, { name: 'd2-crud-x' })
+
 // 注册dvadmin插件
 Vue.use(plugins)
 // // 官方版【此处为演示与官方版共存而引入，全新项目中可以用d2-crud-x完全替代官方版】
@@ -38,6 +43,10 @@ Vue.use(plugins)
  * @param {String} pluginName 插件名称
  */
 Vue.prototype.checkPlugins = checkPlugins
+
+
+
+
 // 引入d2CrudPlus
 Vue.use(d2CrudPlus, {
   starTip: false,
@@ -46,11 +55,11 @@ Vue.use(d2CrudPlus, {
     // 实际使用请改成request
     return request({
       url: url,
-      params: dict.body,
+      params: dict.body, //重点
       method: 'get'
     }).then(ret => {
-      if (dict.isTree) {
-        return XEUtils.toArrayTree(ret.data.data || ret.data, { parentKey: 'parent', strict: false })
+      if (dict.isTree) {  //重点
+        return XEUtils.toArrayTree(ret.data.data || ret.data, { parentKey: 'parent', strict: false }) //重点
       } else {
         return ret.data.data || ret.data
       }
@@ -58,12 +67,13 @@ Vue.use(d2CrudPlus, {
   },
   commonOption () { // 公共配置
     return {
+      // 每个页面的crudOptions会以此全局配置为基础
       format: {
         page: { // page接口返回的数据结构配置，
           request: {
-            current: 'page',
-            size: 'limit',
-            orderAsc (query, value) {
+            current: 'page', //重点 (页码)
+            size: 'limit',  //重点（每页记录条数）
+            orderAsc (query, value) {  //重点
               const field = query.orderProp
               if (value) {
                 query.ordering = field
@@ -77,7 +87,8 @@ Vue.use(d2CrudPlus, {
             size: 'limit', // 当前页码 ret.data.current
             // size: (data) => { return data.size }, // 每页条数，ret.data.size, 你也可以配置一个方法，自定义返回
             total: 'total', // 总记录数 ret.data.total
-            records: 'data' // 列表数组 ret.data.records
+            records: 'data' // 列表数组 ret.data.data
+            // 这样配置之后，当d2-crud-plus需要records的时候，就会从ret.data.data获取
           }
         }
       },
@@ -85,19 +96,19 @@ Vue.use(d2CrudPlus, {
         compact: true
       },
       options: {
-        size: 'small'
+        size: 'small' //重点
       },
       formOptions: {
         nullToBlankStr: true, // 提交修改表单时，将undefinded的数据修改为空字符串''，可以解决无法清空字段的问题
         defaultSpan: 12, // 默认的表单 span
-        saveRemind: true,
-        labelWidth: '110px'
+        saveRemind: true,  //重点
+        labelWidth: '110px'  //重点
       },
       viewOptions: {
         disabled: false,
         componentType: 'form' // 【form,row】 表单组件 或 行组件展示
       },
-      rowHandle: {
+      rowHandle: { //重点
         width: 260,
         edit: {
           type: 'primary'
@@ -112,13 +123,13 @@ Vue.use(d2CrudPlus, {
 Vue.use(D2pAreaSelector)
 Vue.use(D2pIconSelector)
 Vue.use(D2pFullEditor, {
-  ueditor: {
+  ueditor: {  //重点
     serverUrl: '/api/ueditor/'
   }
 })
 Vue.use(D2pDemoExtend)
 Vue.use(D2pFileUploader)
-Vue.use(D2pUploader, {
+Vue.use(D2pUploader, {  //重点
   defaultType: 'form',
   cos: {
     domain: 'https://d2p-demo-1251260344.cos.ap-guangzhou.myqcloud.com',
@@ -195,6 +206,8 @@ d2CrudPlus.util.columnResolve.addTypes(types)
 // 修改官方字段类型
 const selectType = d2CrudPlus.util.columnResolve.getType('select')
 selectType.component.props.color = 'auto' // 修改官方的字段类型，设置为支持自动染色
+
+
 // 获取字典配置
 Vue.prototype.dictionary = function (name) {
   return store.state.d2admin.dictionary.data[name]

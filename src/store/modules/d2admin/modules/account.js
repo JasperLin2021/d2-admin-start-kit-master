@@ -52,7 +52,7 @@ export default {
       await dispatch('load')
     },
     /**
-     * @description 注销用户并返回登录页面
+     * @description 注销用户并返回登录页面,注销时清空权限信息
      * @param {Object} context
      * @param {Object} payload confirm {Boolean} 是否需要确认
      */
