@@ -71,7 +71,7 @@ router.beforeEach(async (to, from, next) => {
         ret = checkRouter(ret)
     console.log('ret==>',ret)
         const routes = handleRouter(ret)
-        // 处理路由 得到每一级的路由设置
+        // 处理路由 得到每一级的路由设置,将支持多标签页显示所有页面数据扁平为一位数组,将得到的路由数据存储到 vuex 中备用。这份数据在操作多页面数据时会使用到
         console.log("routes",routes)
         store.commit('d2admin/page/init', routes)
 

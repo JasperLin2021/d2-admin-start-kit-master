@@ -1,7 +1,8 @@
 import low from 'lowdb'
 import LocalStorage from 'lowdb/adapters/LocalStorage'
-import util from '@/libs/util'
-import { cloneDeep } from 'lodash'
+
+import util from '@/libs/util' //重点
+import { cloneDeep } from 'lodash' //重点
 
 const adapter = new LocalStorage(`d2admin-${process.env.VUE_APP_VERSION}`)
 const db = low(adapter)

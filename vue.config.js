@@ -35,7 +35,7 @@ const pages = undefined
 module.exports = {
   // 根据你的实际情况更改这里
   publicPath,
-  lintOnSave: true,
+  lintOnSave: true, //是否在保存的时候使用 `eslint-loader` 进行检查。
   devServer: {
     publicPath, // 和 publicPath 保持一致
     disableHostCheck: process.env.NODE_ENV === 'development' // 关闭 host check，方便使用 ngrok 之类的内网转发工具
@@ -67,6 +67,7 @@ module.exports = {
     return configNew
   },
   // 默认设置: https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-service/lib/config/base.js
+  // 调整内部的 webpack 配置
   chainWebpack: config => {
     /**
      * 添加 CDN 参数到 htmlWebpackPlugin 配置中
@@ -90,9 +91,11 @@ module.exports = {
     config.plugins
       .delete('prefetch')
       .delete('preload')
+
     // 解决 cli3 热更新失效 https://github.com/vuejs/vue-cli/issues/1559
     config.resolve
       .symlinks(true)
+
     config
       .plugin('theme-color-replacer')
       .use(ThemeColorReplacer, [{

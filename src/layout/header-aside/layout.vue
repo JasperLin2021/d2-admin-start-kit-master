@@ -166,7 +166,7 @@ export default {
   },
   methods: {
     ...mapActions('d2admin/menu', [
-      'asideCollapseToggle'
+      'asideCollapseToggle'  //切换侧边栏展开和收缩
     ]),
     /**
      * 接收点击切换侧边栏的按钮
@@ -189,7 +189,7 @@ export default {
       this.$websocket.initWebSocket()
     },
     destroyed () {
-    离开路由之后断开websocket连接
+    // 离开路由之后断开websocket连接
       this.$websocket.closeWebsocket()
     }
 }

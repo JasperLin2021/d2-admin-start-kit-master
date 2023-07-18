@@ -33,7 +33,7 @@ export default {
           }
         }
       }
-      console.log("permissionList.includes(path + ':' + value)", permissionList.includes(path + ':' + value))
+      // console.log("permissionList.includes(path + ':' + value)", permissionList.includes(path + ':' + value))
       return permissionList.includes(path + ':' + value)
     }
     return true

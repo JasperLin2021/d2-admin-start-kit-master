@@ -1,7 +1,7 @@
 import { mapState } from 'vuex'
 import menuMixin from '../mixin/menu'
 import { createMenu } from '../libs/util.menu'
-import BScroll from 'better-scroll'
+import BScroll from 'better-scroll'  //d2-container 的自定义滚动条依赖
 
 export default {
   name: 'd2-layout-header-aside-menu-side',

@@ -136,7 +136,7 @@ export default {
     }
   },
   created () {
-    this.$store.dispatch('d2admin/db/databaseClear')
+    this.$store.dispatch('d2admin/db/databaseClear')  //清空存储实例
     this.getCaptcha()
   }
 }

@@ -74,7 +74,7 @@ export default {
         store.commit('d2admin/menu/asideSet', []) // 设置侧边栏菜单-新增
         store.commit('d2admin/search/init', []) // 设置搜索-新增
         sessionStorage.removeItem('menuData') //新增
-        store.dispatch('d2admin/db/databaseClear') //新增
+        store.dispatch('d2admin/db/databaseClear') //新增-清空存储实例
 
 
         // 跳转路由
@@ -108,7 +108,7 @@ export default {
       await dispatch('d2admin/theme/load', null, { root: true })
       // 加载页面过渡效果设置
       await dispatch('d2admin/transition/load', null, { root: true })
-      // 持久化数据加载上次退出时的多页列表
+      // 持久化数据加载上次退出时的多页列表,从持久化数据载入分页列表
       await dispatch('d2admin/page/openedLoad', null, { root: true })
       // 持久化数据加载侧边栏配置
       await dispatch('d2admin/menu/asideLoad', null, { root: true })

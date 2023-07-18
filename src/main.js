@@ -21,7 +21,7 @@ import '@/plugin/permission' // 加载permission
 
 // d2-crud-plus 安装与初始化-新增
 import './install'
-// 配置vxe-table-新增
+// 配置vxe-table-新增-支持树形列表展示
 import 'xe-utils'
 import VXETable from 'vxe-table'
 import 'vxe-table/lib/style.css'
